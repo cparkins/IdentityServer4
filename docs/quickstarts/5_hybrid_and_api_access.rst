@@ -88,9 +88,14 @@ The OpenID Connect middleware saves the tokens (identity, access and refresh in 
 automatically for you. That's what the ``SaveTokens`` setting does.
 
 Technically the tokens are stored inside the properties section of the cookie. 
-The easiest way to access them is by using extension methods from the ``Microsoft.AspNetCore.Authentication`` namespace.
+The easiest way to access them is by using extension methods from the ``Microsoft.AspNetCore.Authentication`` namespace in the claims view page by adding::
+    @using Microsoft.AspNetCore.Authentication;
+    @{
+        ViewData["Title"] = "Secure";
+    }
+   
 
-For example on your claims view::
+The requesting the data by adding::
 
     <dt>access token</dt>
     <dd>@await ViewContext.HttpContext.GetTokenAsync("access_token")</dd>
